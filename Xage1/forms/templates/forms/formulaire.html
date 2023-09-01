@@ -1,0 +1,122 @@
+{% extends 'template_base.html' %}
+{% block titre %} Inscription {% endblock %}
+{% block contenu %}  
+
+<style>
+    /* Définissez vos styles CSS ici */
+    .custom-form {
+        max-width: 800px;
+        margin: 100px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .custom-form input[type="text"],
+    .custom-form input[type="email"],
+    .custom-form textarea {
+        width: 100%;
+        height: 30px;
+        padding: auto;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+
+    .submit-button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .submit-button:hover {
+        background-color: #0056b3;
+    }
+
+    /* Ajoutez d'autres styles au besoin */
+    body {
+      font-family: Arial, sans-serif;
+  }
+
+  /* Conteneur du formulaire */
+  .custom-form {
+      max-width: 800px;
+      margin: 0 auto; /* Centrer horizontalement */
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+  }
+
+  /* Bouton de soumission */
+  .submit-button {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+  }
+
+  .submit-button:hover {
+      background-color: #0056b3;
+  }
+
+  /* Titre */
+  h1 {
+      text-align: center;
+  }
+
+  /* Messages d'erreur/succès */
+  .messages {
+      list-style-type: none;
+      padding: 0;
+      text-align: center;
+  }
+
+  .messages li {
+      color: red; /* Couleur pour les messages d'erreur */
+  }
+
+  .success {
+      color: green; /* Couleur pour les messages de succès */
+  }
+
+</style>
+
+
+<h1>Formulaire d'informations</h1>
+
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<form method="post" class="custom-form" id="info-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="submit-button">Soumettre</button>
+</form>
+
+{% endblock %}
+
+<script>
+  // Récupérez le message de succès
+  var successMessage = document.querySelector('.messages .success');
+
+  // Récupérez le formulaire
+  var infoForm = document.getElementById('info-form');
+
+  // Vérifiez si le message de succès existe et masquez le formulaire si nécessaire
+  if (successMessage) {
+      infoForm.style.display = 'none';
+  }
+</script>
+

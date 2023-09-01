@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titre %} {% endblock %}</title>
+    <style>
+        /* Styles de base pour les grands écrans */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/media/back1.jpg'); 
+        }
+        
+        /* Styles pour les liens de navigation */
+        ul.nav-list li a {
+            text-decoration: none;
+            color: #fff;
+            border-bottom: 2px solid transparent; /* Ajoute une ligne de soulignement transparente */
+        }
+
+        /* Styles pour les liens actifs */
+        ul.nav-list li a.active {
+            border-bottom: 2px solid #ff0000; /* Couleur de soulignement */
+        }
+        header, footer {
+            background-color: #333;
+            color: #fff;
+        }
+
+        ul.nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul.nav-list li {
+            display: inline-block;
+            padding: 30px 70px;
+        }
+
+        ul.nav-list li a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul.social-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul.social-list li {
+            display: inline-block;
+            padding: 90px 160px;
+        }
+
+        ul.social-list li a{
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .contenu-block {
+            min-height: 200px;
+        }
+        .text2{
+            margin :20px;
+            display:block;
+            width: 100%;
+            height :200px;
+            padding :10px;
+    
+        }
+    
+        .text3{
+            
+            font-size: 16px;
+            max-width: 150px;
+            text-justify: auto;
+    
+        }
+        .text4{
+            font-size: 12px;
+            max-width: 150px;
+            text-justify: auto;
+    
+        }
+    
+        .text1 {
+            background-color: #333;
+            color: #fff;
+            display:flex;
+            width : 100%;
+     
+            
+        }
+        /* Styles pour les écrans de taille moyenne (par exemple, tablettes) */
+        @media (max-width: 1024px) {
+            ul.nav-list {
+                justify-content: center;
+            }
+
+            ul.nav-list li {
+                padding: 15px;
+            }
+            
+            ul.social-list li {
+                display: block;
+                padding: 20px 0;
+                text-align: center;
+            }
+
+            .text2 {
+                width: 100%;
+                height: auto;
+                padding: 10px;
+                margin: 10px 0;
+                text-align: center;
+            }
+        }
+
+        /* Styles pour les petits écrans (par exemple, smartphones) */
+        @media (max-width: 768px) {
+            ul.nav-list {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            ul.nav-list li {
+                padding: 15px 0;
+            }
+            
+            ul.social-list li {
+                display: block;
+                padding: 20px 0;
+                text-align: center;
+            }
+
+            .text2 {
+                width: auto%;
+               
+                padding: 10px;
+                margin: 10px 0;
+                
+            }
+        }
+
+
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const navLinks = document.querySelectorAll(".nav-list li a");
+    
+            navLinks.forEach((link) => {
+                link.addEventListener("click", function () {
+                    // Supprimer la classe "active" de tous les liens de navigation
+                    navLinks.forEach((navLink) => {
+                        navLink.classList.remove("active");
+                    });
+    
+                    // Ajouter la classe "active" au lien cliqué
+                    this.classList.add("active");
+                });
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+        
+    <header>
+        <ul class="nav-list">
+            <li>
+                <img src="/media/Drapeau.png" alt="Bénin" width="50px" height="30px" >
+            </li>
+            <li>
+                <a href="{% url 'home'%}">Home</a>
+            </li>
+            <li>
+                <a href="{% url 'propos'%}">A propos</a>
+            </li>
+            <li>
+                <a href="{% url 'article'%}">Articles</a>
+            </li>
+            <li>
+                <a href="{% url 'contact'%}">Contact</a>
+            </li>
+            <li>
+                <a href="{% url 'forms'%}">Inscription</a>
+            </li>
+        </ul>    
+    </header>
+    
+
+        <div class="contenu-block">
+            {% block contenu %}{% endblock %}
+        </div>
+
+    <footer>
+        <div class="text1">
+            <div class="text2">
+                <h2 class="text3" >Contactez-nous</h2>
+                <p class="text4" >Pour toute question ou demande de renseignements, n'hésitez pas 
+                    à nous contacter.
+                    Pour toute question ou demande de renseignements, n'hésitez pas à nous contacter.
+                    Pour toute question ou demande de renseignements, n'hésitez pas à nous contacter.
+                </p>
+            </div>
+            <div class="text2">
+                <h2 class="text3" >Contactez-nous</h2>
+                <p class="text4" >Pour toute question ou demande de renseignements, n'hésitez pas 
+                    à nous contacter.
+                    Pour toute question ou demande de renseignements, n'hésitez pas à nous contacter.
+                    Pour toute question ou demande de renseignements, n'hésitez pas à nous contacter.
+                </p>
+            </div>
+            <div class="text2">
+                <h2 class="text3" >Contactez-nous</h2>
+                <p class="text4" >Pour toute question ou demande de renseignements, n'hésitez pas 
+                    à nous contacter.
+                    Pour toute question ou demande de renseignements, n'hésitez pas à nous contacter.
+                    Pour toute question ou demande de renseignements, n'hésitez pas à nous contacter.
+                </p>
+            </div>
+            <div class="text2">
+                <h2 class="text3" >Contactez-nous</h2>
+                <p class="text4" >Pour toute question ou demande de renseignements, n'hésitez pas 
+                    à nous contacter.
+                    Pour toute question ou demande de renseignements, n'hésitez pas à nous contacter.
+                    Pour toute question ou demande de renseignements, n'hésitez pas à nous contacter.
+                </p>
+            </div>
+        </div>
+        
+        <ul class="social-list">
+            <li>
+                <a href="#">Facebook</a>
+            </li>
+            <li>
+                <a href="#">Twitter</a>
+            </li>
+            <li>
+                <a href="#">Google</a>
+            </li>
+        </ul>  
+    </footer>
+</body>
+</html>
